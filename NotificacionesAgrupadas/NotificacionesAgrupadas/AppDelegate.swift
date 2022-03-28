@@ -26,25 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
         print("identifier\(idToDelete)")
                 UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [idToDelete])
-       /* switch application.applicationState {
-
-        case .inactive:
-            print("Inactive")
-            //Show the view with the content of the push
-            completionHandler(.newData)
-
-        case .background:
-            print("Background")
-            //Refresh the local model
-            completionHandler(.newData)
-
-        case .active:
-            print("Active")
-            //Show an in-app banner
-            completionHandler(.newData)
-        @unknown default:
-            print("ERROR")
-        }*/
     }
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
