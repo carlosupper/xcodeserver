@@ -9,6 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var text: UILabel!
+    var numero:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         permisosNotificacion()
@@ -117,6 +120,7 @@ class ViewController: UIViewController {
     
     @IBAction func createNotificationsButton(_ sender: UIButton) {
         programarNotificacionesAgrupadas()
+        text.text = numero!
     }
     
     
