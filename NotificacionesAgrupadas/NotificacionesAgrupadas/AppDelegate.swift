@@ -14,36 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
-        requestPermission()
         return true
     }
         
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-        guard let idToDelete = userInfo["identifier"] as? String else {
-                    completionHandler(.noData)
-                    return
-                }
-        print("identifier\(idToDelete)")
-                UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [idToDelete])
-    }
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-       print("didReceiveRemoteNotification \(userInfo)")
-    }
     
 
-    func application(_ application: UIApplication,
-                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
-      print("Unable to register for remote notifications: \(error.localizedDescription)")
-    }
-    func application(_ application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      print("APNs token retrieved: \(deviceToken)")
-
-      // With swizzling disabled you must set the APNs token here.
-      // Messaging.messaging().apnsToken = deviceToken
-    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -95,23 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }*/
 
                 //completionHandler([])
-        completionHandler([.alert, .sound])
+        //completionHandler([.alert, .sound])
 
     }
-    
 
-    func requestPermission() -> Void {
-    let notificationsCenter = UNUserNotificationCenter.current()
-    notificationsCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-    if let error = error {
-    print("error while requesting permission: \(error.localizedDescription)")
-    }
-    if granted {
-    //print("permission granted")
-    } else {
-    //print("permission denied")
-    }
-    }
-    }
 }
 
