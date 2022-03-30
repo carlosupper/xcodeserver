@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }*/
 
                 //completionHandler([])
-        //completionHandler([.alert, .sound])
+        completionHandler([.alert, .sound])
 
     }
 
